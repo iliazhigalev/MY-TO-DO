@@ -1,0 +1,17 @@
+#IDE
+.idea/
+.vscode/
+
+#Deployment environment
+.env
+
+#Python bytecode
+__pycache__
+
+#Virtual environment
+
+venv/
+
+#Django
+./static
+./media
