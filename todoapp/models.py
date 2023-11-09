@@ -6,7 +6,7 @@ class ToDo(models.Model):
 
     title = models.CharField(max_length=150, verbose_name='Название задания')
     is_complete = models.BooleanField('Завершено', default=False)
-    time = models.DateTimeField(auto_now_add=True)  # дата, создания задания
+    time = models.DateTimeField(auto_now_add=True,verbose_name='дата создания')  # дата, создания задания
 
     class Meta:
         verbose_name = 'Задание'

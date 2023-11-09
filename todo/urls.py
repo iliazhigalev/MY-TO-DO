@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from todoapp.views import page_not_found
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,3 +25,8 @@ urlpatterns = [
 ]
 
 handler404 = page_not_found  # will be called whenever a 404 error occurs
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns.append(path('__debug__/', include('debug_toolbar.urls')))
