@@ -2,3 +2,92 @@
     text-align: center;
     color: lightgrey;
 }
+
+
+
+/* Общие стили */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 20px auto;
+}
+
+/* Навигационное меню */
+.ui.menu {
+    background-color: #f8f8f8;
+    border: none;
+}
+
+.ui.dropdown {
+    color: #333;
+}
+
+/* Заголовки и кнопки */
+.ui.header {
+    color: #2185d0;
+}
+
+.ui.big.header {
+    font-size: 2em;
+}
+
+.ui.segment {
+    margin-bottom: 20px;
+}
+
+.ui.primary.basic.button,
+.ui.teal.basic.button {
+    margin-top: 10px;
+}
+
+/* Элементы задачи */
+.ui.segment {
+    background-color: #ffffff;
+    box-shadow: 0px 2px 4px rgba(34, 36, 38, 0.12), 0px 2px 10px rgba(34, 36, 38, 0.15);
+    padding: 20px;
+}
+
+.ui.gray.label,
+.ui.green.label {
+    margin-right: 10px;
+}
+
+.ui.gray.label {
+    background-color: #d4d4d5;
+    color: #1b1c1d;
+}
+
+.ui.green.label {
+    background-color: #a7e9af;
+    color: #1b1c1d;
+}
+
+.ui.primary.basic.button,
+.ui.teal.basic.button {
+    color: #2185d0;
+}
+
+.ui.primary.basic.button:hover,
+.ui.teal.basic.button:hover {
+    background-color: #f8f8f8;
+}
+
+.ui.blue.button {
+    color: #2185d0;
+}
+
+.ui.blue.button:hover {
+    background-color: #f0f5fe;
+}
+
+.ui.negative.basic.button {
+    color: #db2828;
+}
+
+.ui.negative.basic.button:hover {
+    background-color: #fff5f5;
+}
