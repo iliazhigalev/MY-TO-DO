@@ -22,6 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('todoapp.urls')),
+    path('users/', include('users.urls')),
 ]
 
 handler404 = page_not_found  # will be called whenever a 404 error occurs

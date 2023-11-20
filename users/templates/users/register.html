@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+
+<div class="login">
+  <div class="login-header">
+    <h1>Регистрация</h1>
+  </div>
+  <div class="login-form">
+    <form action="{% url 'users:register' %}" method="post">
+      {% csrf_token %}
+      {{ form.username.label_tag }}
+      {{ form.username }}
+      {{ form.email.label_tag }}
+      {{ form.email }}
+      {{ form.password1.label_tag }}
+      {{ form.password1 }}
+      {{ form.password2.label_tag }}
+      {{ form.password2 }}
+      <button type="submit" class="btn btn-primary mt-3">Зарегистрироваться</button>
+    </form>
+  </div>
+</div>
+<div class="error-page">
+  <div class="try-again">Error: Try again?</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="{% static 'users/js/register.js' %}"></script>
+{% endblock content %}

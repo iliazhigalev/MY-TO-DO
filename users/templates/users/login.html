@@ -1,0 +1,28 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+
+<div class="login">
+  <div class="login-header">
+    <h1>Вход</h1>
+  </div>
+  <div class="login-form">
+    <form action="{% url 'users:login' %}" method="post">
+      {% csrf_token %}
+      {{ form.username.label_tag }}
+      {{ form.username }}
+      {{ form.password.label_tag }}
+      {{ form.password }}
+      <button type="submit" class="btn btn-primary mt-3">Вход</button>
+    </form>
+  </div>
+</div>
+<div class="error-page">
+  <div class="try-again">Error: Try again?</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="{% static 'users/js/login.js' %}"></script>
+{% endblock content %}
