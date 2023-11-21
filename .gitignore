@@ -13,5 +13,4 @@ __pycache__
 venv/
 
 #Django
-./static
 ./media

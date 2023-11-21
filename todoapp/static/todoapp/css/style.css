@@ -1,93 +1,83 @@
+/* Reset some default styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Container for the login form */
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+/* Header styles */
+.login-header h1 {
+  color: #333;
+  text-align: center;
+}
+
+/* Form styles */
+.login-form {
+  margin-top: 20px;
+}
+
+/* Input styles */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Button styles */
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+/* Error page styles */
+.error-page {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.try-again {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+/* Add more styles as needed */
+
 .test_style{
     text-align: center;
     color: lightgrey;
-}
-
-
-
-/* Общие стили */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    margin: 20px auto;
-}
-
-/* Навигационное меню */
-.ui.menu {
-    background-color: #f8f8f8;
-    border: none;
-}
-
-.ui.dropdown {
-    color: #333;
-}
-
-/* Заголовки и кнопки */
-.ui.header {
-    color: #2185d0;
-}
-
-.ui.big.header {
-    font-size: 2em;
-}
-
-.ui.segment {
-    margin-bottom: 20px;
-}
-
-.ui.primary.basic.button,
-.ui.teal.basic.button {
-    margin-top: 10px;
-}
-
-/* Элементы задачи */
-.ui.segment {
-    background-color: #ffffff;
-    box-shadow: 0px 2px 4px rgba(34, 36, 38, 0.12), 0px 2px 10px rgba(34, 36, 38, 0.15);
-    padding: 20px;
-}
-
-.ui.gray.label,
-.ui.green.label {
-    margin-right: 10px;
-}
-
-.ui.gray.label {
-    background-color: #d4d4d5;
-    color: #1b1c1d;
-}
-
-.ui.green.label {
-    background-color: #a7e9af;
-    color: #1b1c1d;
-}
-
-.ui.primary.basic.button,
-.ui.teal.basic.button {
-    color: #2185d0;
-}
-
-.ui.primary.basic.button:hover,
-.ui.teal.basic.button:hover {
-    background-color: #f8f8f8;
-}
-
-.ui.blue.button {
-    color: #2185d0;
-}
-
-.ui.blue.button:hover {
-    background-color: #f0f5fe;
-}
-
-.ui.negative.basic.button {
-    color: #db2828;
-}
-
-.ui.negative.basic.button:hover {
-    background-color: #fff5f5;
 }
