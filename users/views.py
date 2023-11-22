@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
-from users.forms import UserLoginForm, UserRegistrationForm
+from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from django.contrib import auth
 
 
@@ -22,10 +22,6 @@ def login(request):
     return render(request, 'users/login.html', context)
 
 
-def logout_user(request):
-    return HttpResponse("logout")
-
-
 def register(request):
     ''' Функция для регистрации пользователя '''
     if request.method == 'POST':
@@ -37,3 +33,20 @@ def register(request):
         form = UserRegistrationForm()
     context = {'form': form}
     return render(request, 'users/register.html', context)
+
+
+def profile(request):
+    if request.method == 'POST':
+        form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('users:profile'))
+    else:
+        form = UserProfileForm(instance=request.user)
+    context = {'form': form}
+    return render(request, 'users/profile.html', context)
+
+
+def logout_user(request):
+    auth.logout(request)
+    return HttpResponseRedirect(reverse('todoapp:index'))

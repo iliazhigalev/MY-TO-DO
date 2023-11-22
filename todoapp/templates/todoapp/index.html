@@ -15,25 +15,32 @@
         <button class="ui teal basic button" type="submit">Добавить</button>
     </form>
 
-    {% for todo in to_do_list %}
-    <div class="ui segment">
-        <p class="ui big header">{{ todo.title }}</p>
+    {% if user.is_authenticated %}
+        {% if user.todo_set.all|length > 0 %}
+            {% for todo in user.todo_set.all %}
+                <div class="ui segment">
+                    <p class="ui big header">{{ todo.title }}</p>
 
-        {% if todo.is_complete == False %}
-        <span class="ui gray label">Не завершено</span>
-        <a class="ui primary basic button" href="{% url 'todoapp:update' pk=todo.id %}">Закрыть</a>
+                    {% if not todo.is_complete %}
+                        <span class="ui gray label">Не завершено</span>
+                        <a class="ui primary basic button" href="{% url 'todoapp:update' pk=todo.id %}">Закрыть</a>
+                    {% else %}
+                        <span class="ui green label">Завершено</span>
+                        <a class="ui blue button" href="{% url 'todoapp:update' pk=todo.id %}">Открыть</a>
+                    {% endif %}
+
+                    <form method="post" action="{% url 'todoapp:delete' pk=todo.id %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button class="ui negative basic button" type="submit">Удалить</button>
+                    </form>
+                </div>
+            {% endfor %}
         {% else %}
-        <span class="ui green label">Завершено</span>
-        <a class="ui blue button" href="{% url 'todoapp:update' pk=todo.id %}">Открыть</a>
+            <h4>Нет добавленных задач</h4>
         {% endif %}
-
-        <form method="post" action="{% url 'todoapp:delete' pk=todo.id %}" style="display: inline;">
-            {% csrf_token %}
-            <button class="ui negative basic button" type="submit">Удалить</button>
-        </form>
-    </div>
-    {% endfor %}
-
+    {% else %}
+        <h4>Для просмотра задач вам необходимо войти в систему.</h4>
+    {% endif %}
 </div>
 
 {% endblock content %}

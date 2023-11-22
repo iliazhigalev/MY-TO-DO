@@ -16,10 +16,22 @@
 <!-- Navigation -->
 <nav class="ui menu">
     <div class="ui container">
+        {% if user.is_authenticated %}
+        <ul class="last">
+        <a href="{% url 'todoapp:index' %}">Главная</a> | <a href="{% url 'users:profile' %}">Профиль</a>
+        </ul>
+         {% else %}
+        <div class="menu">
+            <ul class="last">
+                <a href="{% url 'todoapp:index' %}">Главная</a> </a>
+            </ul>
+        </div>
+
         <div class="right menu">
             <ul class="last">
                 <a href="{% url 'users:register' %}">Регистрация</a> | <a href="{% url 'users:login' %}">Войти</a>
             </ul>
+            {% endif %}
         </div>
     </div>
 </nav>

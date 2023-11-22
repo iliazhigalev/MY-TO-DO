@@ -11,7 +11,6 @@ class IndexView(ListView):
     model = ToDo
     template_name = 'todoapp/index.html'
     title = "Главная страница"
-    context_object_name = 'to_do_list'
     ordering = ['-id']  # Указывает порядок сортировки
 
 
@@ -22,6 +21,8 @@ class ToDoCreateView(CreateView):
     success_url = reverse_lazy('todoapp:index')
 
     def form_valid(self, form):
+        # Устанавливаем пользователя перед сохранением формы
+        form.instance.user = self.request.user
         form.instance.is_complete = False  # Инициализация значения is_complete
         return super(ToDoCreateView, self).form_valid(form)
 
