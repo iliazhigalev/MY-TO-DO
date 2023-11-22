@@ -40,7 +40,7 @@ def profile(request):
         form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('users:profile'))
+            return HttpResponseRedirect(reverse('todoapp:index'))
     else:
         form = UserProfileForm(instance=request.user)
     context = {'form': form}
