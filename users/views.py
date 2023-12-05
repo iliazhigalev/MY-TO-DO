@@ -5,6 +5,7 @@ from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from django.contrib import auth
 
 
+
 def login(request):
     ''' Функция для авторизации и аунтефикации '''
     if request.method == 'POST':
@@ -33,7 +34,6 @@ def register(request):
         form = UserRegistrationForm()
     context = {'form': form}
     return render(request, 'users/register.html', context)
-
 
 def profile(request):
     if request.method == 'POST':

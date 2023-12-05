@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  django:
+    container_name: my_to_do_list
+    build:
+      context: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    restart: always
+    networks:
+      - mynetwork
+    volumes:
+      - django_data:/app
+
+  postgres:
+    container_name: postgres
+    image: postgres:13
+    environment:
+      POSTGRES_DB: todo_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: qweopkl
+      POSTGRES_INITDB_ARGS: "-A md5"
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - mynetwork
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  django_data:
+  postgres_data:
+
+networks:
+  mynetwork:

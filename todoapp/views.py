@@ -1,10 +1,14 @@
-from django.http import HttpResponseNotFound
+from django.http import HttpResponseNotFound, HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView
+from django.contrib.auth import get_user_model
+
+from users.models import User
 from .forms import ToDoForm
 from .models import ToDo
 from django.views.generic.edit import CreateView, DeleteView
+from django.contrib.auth.decorators import login_required
 
 
 class IndexView(ListView):
@@ -21,10 +25,17 @@ class ToDoCreateView(CreateView):
     success_url = reverse_lazy('todoapp:index')
 
     def form_valid(self, form):
-        # Устанавливаем пользователя перед сохранением формы
-        form.instance.user = self.request.user
-        form.instance.is_complete = False  # Инициализация значения is_complete
-        return super(ToDoCreateView, self).form_valid(form)
+        # Получаем пользователя из запроса
+        user = self.request.user
+        User = get_user_model()
+        title = form.cleaned_data.get('title', False)
+
+        if user.is_authenticated and isinstance(user, User) and title:
+            form.instance.user = user
+            form.instance.is_complete = False
+            return super().form_valid(form)
+        else:
+            return HttpResponse("<h1>Статьи по категориям</h1>")
 
 
 def update(request, pk):
