@@ -1,15 +1,13 @@
+from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
 
-# Set the default Django settings module for the 'celery' program.
+# Установка переменной окружения, чтобы использовать файл настроек Django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'todo.settings')
 
-# Создаем объект приложения Celery, используя имя модуля 'todo'
-# и используем предварительно настроенные настройки из Django
+# Создание экземпляра Celery и назначение его конфигурации из Django settings
 app = Celery('todo')
-
-# Загружаем модули задач из всех зарегистрированных приложений Django.
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
-# Автоматическое обнаружение задач в приложениях Django
+# Загрузка задач из всех зарегистрированных приложений Django
 app.autodiscover_tasks()

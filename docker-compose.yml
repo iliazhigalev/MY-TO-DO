@@ -11,29 +11,25 @@ services:
     restart: always
     networks:
       - mynetwork
-    volumes:
-      - django_data:/app
+
 
   celery:
     build:
       context: .
     container_name: celery
+    restart: always
     command: celery -A todo worker -l info
-    volumes:
-      - ./app:/app
     depends_on:
       - redis
+      - postgres
     networks:
       - mynetwork
 
   redis:
-    image: "redis:latest"
-    container_name: redis_server
+    image: redis:alpine
+    container_name: redis
     ports:
       - "6379:6379"
-    volumes:
-      - $PWD/redis-data:/var/lib/redis
-      - $PWD/redis.conf:/usr/local/etc/redis/redis.conf
     networks:
       - mynetwork
 
@@ -50,8 +46,7 @@ services:
     restart: always
     networks:
       - mynetwork
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+
 
 volumes:
   django_data:

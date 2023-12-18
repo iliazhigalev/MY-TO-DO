@@ -16,7 +16,7 @@ COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 
 # Копируем все файлы проекта в контейнер
-COPY . .
+COPY . /app
 
 # Добавим текущую рабочую директорию в переменную PYTHONPATH
 ENV PYTHONPATH /app
@@ -30,4 +30,4 @@ RUN mkdir -p /static/
 # Собираем статические файлы
 
 # Команда для запуска сервера Django с автоперезагрузкой
-CMD ["watchmedo", "auto-restart", "--", "python", "manage.py", "runserver", "0.0.0.0:8080"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
