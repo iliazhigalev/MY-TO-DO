@@ -18,11 +18,16 @@ RUN pip install -r requirements.txt
 # Копируем все файлы проекта в контейнер
 COPY . .
 
+# Добавим текущую рабочую директорию в переменную PYTHONPATH
+ENV PYTHONPATH /app
+
+# Добавьте todoapp в sys.path
+COPY todoapp /app/todoapp
+
 # Создаем директорию для сбора статических файлов
 RUN mkdir -p /static/
 
 # Собираем статические файлы
-RUN python manage.py collectstatic --noinput
 
 # Команда для запуска сервера Django с автоперезагрузкой
 CMD ["watchmedo", "auto-restart", "--", "python", "manage.py", "runserver", "0.0.0.0:8080"]
