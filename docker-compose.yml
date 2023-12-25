@@ -12,7 +12,6 @@ services:
     networks:
       - mynetwork
 
-
   celery:
     build:
       context: .
@@ -48,7 +47,6 @@ services:
       - mynetwork
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
 
 volumes:
   django_data:
