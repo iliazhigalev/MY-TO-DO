@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
 
     'debug_toolbar',
+    'rest_framework',
     'django_celery_results',
     'celery',
 ]

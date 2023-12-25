@@ -46,6 +46,8 @@ services:
     restart: always
     networks:
       - mynetwork
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
 
 volumes:
