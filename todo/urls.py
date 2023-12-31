@@ -16,18 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+from api.views import ToDoListAPIView
 from todoapp.views import page_not_found
-from django.conf import settings
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('todoapp.urls')),
     path('users/', include('users.urls')),
+    path('api/v1/', ToDoListAPIView.as_view(), name='api-v1'),
+    path('', include('todoapp.urls')),  # Перемещено вниз, под 'api/v1/' шаблон
 ]
-
-handler404 = page_not_found  # will be called whenever a 404 error occurs
 
 if settings.DEBUG:
     import debug_toolbar

@@ -3,13 +3,12 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.contrib.auth import get_user_model
+from rest_framework import generics
 
 from users.models import User
 from .forms import ToDoForm
 from .models import ToDo
 from django.views.generic.edit import CreateView, DeleteView
-from django.contrib.auth.decorators import login_required
-
 
 class IndexView(ListView):
     model = ToDo

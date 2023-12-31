@@ -41,9 +41,10 @@ INSTALLED_APPS = [
 
     'todoapp.apps.TodoappConfig',
     'users.apps.UsersConfig',
+    'rest_framework',
+    'api',
 
     'debug_toolbar',
-    'rest_framework',
     'django_celery_results',
     'celery',
 ]

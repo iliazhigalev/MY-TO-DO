@@ -11,6 +11,8 @@ services:
     restart: always
     networks:
       - mynetwork
+    volumes:
+      - django_data:/app
 
   celery:
     build:
